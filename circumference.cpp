@@ -7,7 +7,6 @@ int main()
     std::cin >> radius;
 
     const double pi = 3.14;
-    const double result = pi * (radius * radius);
-
+    const double result = 2 * pi * radius; 
     std::cout << "Circumference of a circle is " << result << std::endl;
 }
