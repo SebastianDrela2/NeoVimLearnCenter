@@ -1,0 +1,22 @@
+# Vim/NeoVim swap files
+*.swp
+*.swo
+*.swl
+*.swm
+*.sw?
+
+*.exe
+*.exe~
+*.out
+*.bin
+*.o
+*.a
+*.so
+*.dll
+
+# IDE/Editor specific files
+.vscode/
+.idea/
+*.swp
+*~
+
