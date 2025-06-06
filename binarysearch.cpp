@@ -1,40 +1,77 @@
 #include <iostream>
 #include <vector>
 
-int main()
+//A B C D E F G H I
+//0 1 2 3 4 5 6 7 8
+//- - - - 0 1 2 3 4
+//- - - - - - 0 1 2 
+//- - - - - - - 0 1
+//- - - - - - - - 0
+
+//2 4 6 8
+//A B C D E F G H I
+//0 1 2 3 4 - - - -
+//0 1 2 - - - - - -
+//0 1 - - - - - - -
+//0 - - - - - - - -
+
+//2 4 6 8
+//2 4 6 -
+//- 4 6 -
+//
+
+int binarySearch(std::vector<int>* vec, int* target)
 {
-    std::vector<int> vec = { 2, 4, 6, 8 };
-
-    int target = 6;
     bool found = false;
+    int start = 0;
+    int end = vec->size();
+    int size = end - start; 
+    int mid = end / 2;
 
-    while (vec.size() != 0)
+    while (start != end)
     {
-        size_t mid = vec.size() / 2;
-
-        if (target == vec[mid])
+        if (*target == (*vec)[mid])
         {
-            found = true;
-            break;
+            return mid;
         }
 
-        if (target > vec[mid]) 
+        if (*target > (*vec)[mid]) 
         {
-            vec = std::vector<int>(vec.begin() + mid + 1, vec.end());
+            start = mid + 1;
         }
         else 
         {
-            vec = std::vector<int>(vec.begin(), vec.begin() + mid);
+            end = mid;
         }
+
+        mid = (start + end) / 2;
+        size = end - start;
     }
 
-    if (found)
+    if (*target < (*vec)[0])
     {
-        std::cout << "Element exists in the vector" << std::endl;
+        return -1;
     }
-    else 
+    else if (*target > (*vec)[vec->size() - 1]) 
     {
-        std::cout << "Element does not exist in the vector" << std::endl;
+        return ~vec->size();
     }
+
+    return -mid;
+}
+
+int main()
+{
+    std::vector<int> vec = { 2, 4, 6, 8 };
+    int target = 9;
+    auto result = binarySearch(&vec, &target);
+
+    if (result < 0)
+    {
+        std::cout << "Ones complement " << ~result << std::endl;
+    }
+
+    std::cout << "Result " << result << std::endl;
+   
     return 0;
 }

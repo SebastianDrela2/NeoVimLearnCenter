@@ -3,15 +3,15 @@
 
 int main()
 {
-  std::string text;
-  std::getline(std::cin, text);
+    std::string text;
+    std::getline(std::cin, text);
 
-  int textLength = text.length();
+    int textLength = text.length();
 
-  std::cout << "Total text length: " << textLength << std::endl;
+    std::cout << "Total text length: " << textLength << std::endl;
 
-  if (true)
-  {
-
-  }
+    if (true)
+    {
+        
+    }
 }
